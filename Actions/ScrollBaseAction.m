@@ -39,7 +39,8 @@
 -(CGScrollEventUnit)scrollUnit {
     [NSException raise:@"InvalidCommandException"
                 format:@"To be implemented by subclasses"];
-    return (CGScrollEventUnit)NULL;
+    //return (CGScrollEventUnit)NULL;
+    return kCGScrollEventUnitPixel;
 }
 
 #pragma mark - ActionProtocol

@@ -29,6 +29,10 @@
 		22E5627216BA589200CD5D86 /* PrintAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E5626616BA589200CD5D86 /* PrintAction.m */; };
 		22E5627316BA589200CD5D86 /* TripleclickAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E5626816BA589200CD5D86 /* TripleclickAction.m */; };
 		22E5627416BA589200CD5D86 /* WaitAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E5626A16BA589200CD5D86 /* WaitAction.m */; };
+		321AE5722D2CF45600C947AB /* OriginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 321AE56B2D2CF45600C947AB /* OriginAction.m */; };
+		321AE5732D2CF45600C947AB /* ScrollBaseAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 321AE56D2D2CF45600C947AB /* ScrollBaseAction.m */; };
+		321AE5742D2CF45600C947AB /* ScrollLineAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 321AE56F2D2CF45600C947AB /* ScrollLineAction.m */; };
+		321AE5752D2CF45600C947AB /* ScrollPixelAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 321AE5712D2CF45600C947AB /* ScrollPixelAction.m */; };
 		5B9FEE9A1DDF5E6F0020F6F6 /* RightClickAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9FEE991DDF5E6F0020F6F6 /* RightClickAction.m */; };
 		8DD76F9A0486AA7600D96B5E /* cliclick.m in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* cliclick.m */; settings = {ATTRIBUTES = (); }; };
 		8DD76F9C0486AA7600D96B5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
@@ -94,6 +98,14 @@
 		22E5626816BA589200CD5D86 /* TripleclickAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TripleclickAction.m; path = Actions/TripleclickAction.m; sourceTree = "<group>"; };
 		22E5626916BA589200CD5D86 /* WaitAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaitAction.h; path = Actions/WaitAction.h; sourceTree = "<group>"; };
 		22E5626A16BA589200CD5D86 /* WaitAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WaitAction.m; path = Actions/WaitAction.m; sourceTree = "<group>"; };
+		321AE56A2D2CF45600C947AB /* OriginAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OriginAction.h; path = Actions/OriginAction.h; sourceTree = "<group>"; };
+		321AE56B2D2CF45600C947AB /* OriginAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OriginAction.m; path = Actions/OriginAction.m; sourceTree = "<group>"; };
+		321AE56C2D2CF45600C947AB /* ScrollBaseAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ScrollBaseAction.h; path = Actions/ScrollBaseAction.h; sourceTree = "<group>"; };
+		321AE56D2D2CF45600C947AB /* ScrollBaseAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ScrollBaseAction.m; path = Actions/ScrollBaseAction.m; sourceTree = "<group>"; };
+		321AE56E2D2CF45600C947AB /* ScrollLineAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ScrollLineAction.h; path = Actions/ScrollLineAction.h; sourceTree = "<group>"; };
+		321AE56F2D2CF45600C947AB /* ScrollLineAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ScrollLineAction.m; path = Actions/ScrollLineAction.m; sourceTree = "<group>"; };
+		321AE5702D2CF45600C947AB /* ScrollPixelAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ScrollPixelAction.h; path = Actions/ScrollPixelAction.h; sourceTree = "<group>"; };
+		321AE5712D2CF45600C947AB /* ScrollPixelAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ScrollPixelAction.m; path = Actions/ScrollPixelAction.m; sourceTree = "<group>"; };
 		32A70AAB03705E1F00C91783 /* cliclick_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cliclick_Prefix.pch; sourceTree = "<group>"; };
 		5B9FEE981DDF5E6F0020F6F6 /* RightClickAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RightClickAction.h; path = Actions/RightClickAction.h; sourceTree = "<group>"; };
 		5B9FEE991DDF5E6F0020F6F6 /* RightClickAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RightClickAction.m; path = Actions/RightClickAction.m; sourceTree = "<group>"; };
@@ -183,6 +195,14 @@
 		22704CCB19816C4C000270EE /* MouseActions */ = {
 			isa = PBXGroup;
 			children = (
+				321AE56A2D2CF45600C947AB /* OriginAction.h */,
+				321AE56B2D2CF45600C947AB /* OriginAction.m */,
+				321AE56C2D2CF45600C947AB /* ScrollBaseAction.h */,
+				321AE56D2D2CF45600C947AB /* ScrollBaseAction.m */,
+				321AE56E2D2CF45600C947AB /* ScrollLineAction.h */,
+				321AE56F2D2CF45600C947AB /* ScrollLineAction.m */,
+				321AE5702D2CF45600C947AB /* ScrollPixelAction.h */,
+				321AE5712D2CF45600C947AB /* ScrollPixelAction.m */,
 				22E5626116BA589200CD5D86 /* MouseBaseAction.h */,
 				22E5626216BA589200CD5D86 /* MouseBaseAction.m */,
 				22E5625616BA589200CD5D86 /* ClickAction.h */,
@@ -362,6 +382,10 @@
 				22E5626B16BA589200CD5D86 /* ClickAction.m in Sources */,
 				22E5626C16BA589200CD5D86 /* DoubleclickAction.m in Sources */,
 				22E5626D16BA589200CD5D86 /* KeyDownAction.m in Sources */,
+				321AE5722D2CF45600C947AB /* OriginAction.m in Sources */,
+				321AE5732D2CF45600C947AB /* ScrollBaseAction.m in Sources */,
+				321AE5742D2CF45600C947AB /* ScrollLineAction.m in Sources */,
+				321AE5752D2CF45600C947AB /* ScrollPixelAction.m in Sources */,
 				22E5626E16BA589200CD5D86 /* KeyPressAction.m in Sources */,
 				22E5626F16BA589200CD5D86 /* KeyUpAction.m in Sources */,
 				22C68A501825A8960083A722 /* KeyDownUpBaseAction.m in Sources */,

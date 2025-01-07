@@ -42,9 +42,9 @@
         } else if ([target isEqualToString:@"clipboard"]) {
             outputTarget = target;
             NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
-            [pasteboard declareTypes:[NSArray arrayWithObject:NSStringPboardType] owner:nil];
+            [pasteboard declareTypes:[NSArray arrayWithObject:NSPasteboardTypeString] owner:nil];
             [pasteboard setString:@""
-                          forType:NSStringPboardType];
+                          forType:NSPasteboardTypeString];
         } else {
             NSFileManager *fm = [NSFileManager defaultManager];
             if ([fm fileExistsAtPath:target]) {
@@ -77,8 +77,8 @@
 
     if ([outputTarget isEqualToString:@"clipboard"]) {
         NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
-        [pasteboard setString:[NSString stringWithFormat:@"%@%@\n", [pasteboard stringForType:NSStringPboardType], message]
-                      forType:NSStringPboardType];
+        [pasteboard setString:[NSString stringWithFormat:@"%@%@\n", [pasteboard stringForType:NSPasteboardTypeString], message]
+                      forType:NSPasteboardTypeString];
         return;
     }
 

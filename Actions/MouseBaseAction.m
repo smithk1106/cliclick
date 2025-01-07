@@ -31,6 +31,9 @@
 #include <stdlib.h>
 #include <math.h>
 
+static CGFloat originX = 0;
+static CGFloat originY = 0;
+
 @implementation MouseBaseAction
 
 + (int)getCoordinate:(NSString *)unparsedValue
@@ -69,6 +72,38 @@
     }
 }
 
++ (WindowInfo *)getWindowInfo:(NSString *)windowTitle {
+    WindowInfo *winInfo = nil;
+    NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:windowTitle options:NSRegularExpressionCaseInsensitive error:nil];
+    CFArrayRef windowList = CGWindowListCopyWindowInfo(kCGWindowListOptionOnScreenOnly, kCGNullWindowID);
+    long count;
+    
+    if (windowList != nil) {
+        count = CFArrayGetCount(windowList);
+        for (long i = 0; i < count; i++) {
+            CFDictionaryRef window = CFArrayGetValueAtIndex(windowList, i);
+            NSString *ownerName = (NSString *)CFDictionaryGetValue(window, kCGWindowOwnerName);
+            if ([regex firstMatchInString:ownerName options:0 range:NSMakeRange(0, ownerName.length)]) {
+                winInfo = (WindowInfo *)alloca(sizeof(WindowInfo));
+                // Window number
+                winInfo->number = (NSInteger)CFDictionaryGetValue(window, kCGWindowNumber);
+                // Window title
+                winInfo->title = ownerName;
+                // Window bounds
+                CGRectMakeWithDictionaryRepresentation((__bridge CFDictionaryRef)(CFDictionaryGetValue(window, kCGWindowBounds)), &winInfo->bounds);
+                // owner PID
+                winInfo->ownerPID = (NSInteger)CFDictionaryGetValue(window, kCGWindowOwnerPID);
+                // is on screen
+                winInfo->isOnscreen = (CFBooleanRef)CFDictionaryGetValue(window, kCGWindowIsOnscreen);
+                //NSLog(@"[D][%ld]%@(isOnscreen:%d)", (long)winInfo->number, winInfo->title, winInfo->isOnscreen);
+                break;
+            }
+        }
+    }
+    
+    return winInfo;
+}
+
 - (NSString *)actionDescriptionString:(NSString *)locationDescription {
     [NSException raise:@"InvalidCommandException"
                 format:@"To be implemented by subclasses"];
@@ -101,7 +136,7 @@
         // Use current location
         p.x = (int)currentLocation.x;
         p.y = (int)currentLocation.y;
-        verboseLoc = @"current location";
+        verboseLoc = [NSString stringWithFormat:@"current location(%.0f,%.0f)", p.x, p.y];
     } else {
         NSArray *coords = [data componentsSeparatedByString:@","];
 
@@ -112,12 +147,12 @@
             [NSException raise:@"InvalidCommandException"
                         format:@"Invalid argument “%@” to command “%@”: Expected two coordinates (separated by a comma) or “.”. Examples: “%@:123,456” or “%@:.”",
                                data, shortcut, shortcut, shortcut];
+        } else {
+            p.x = [[self class] getCoordinate:[coords objectAtIndex:0] forAxis:XAXIS] + originX;
+            p.y = [[self class] getCoordinate:[coords objectAtIndex:1] forAxis:YAXIS] + originY;
+            
+            verboseLoc = [NSString stringWithFormat:@"%@,%@", [coords objectAtIndex:0], [coords objectAtIndex:1]];
         }
-
-        p.x = [[self class] getCoordinate:[coords objectAtIndex:0] forAxis:XAXIS];
-        p.y = [[self class] getCoordinate:[coords objectAtIndex:1] forAxis:YAXIS];
-
-        verboseLoc = [NSString stringWithFormat:@"%@,%@", [coords objectAtIndex:0], [coords objectAtIndex:1]];
     }
 
     if (MODE_REGULAR != options.mode) {
@@ -196,6 +231,15 @@
         float f = ((2 * p) - 2);
         return (float)0.5 * f * f * f + 1;
     }
+}
+
+- (CGPoint)getOrigin {
+    return CGPointMake(originX, originY);
+}
+
+- (void)setOrigin:(CGPoint)p {
+    originX = p.x;
+    originY = p.y;
 }
 
 @end

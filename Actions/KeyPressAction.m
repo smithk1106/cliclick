@@ -133,7 +133,7 @@
 - (void)performActionWithKeycode:(CGKeyCode)code {
 
     if ([self keyCodeRequiresSystemDefinedEvent:code]) {
-        NSEvent *e1 = [NSEvent otherEventWithType:NSSystemDefined
+        NSEvent *e1 = [NSEvent otherEventWithType:NSEventTypeSystemDefined
                                          location:NSZeroPoint
                                     modifierFlags:0xa00
                                         timestamp:0
@@ -144,7 +144,7 @@
                                             data2:-1];
         CGEventPost(0, [e1 CGEvent]);
 
-        NSEvent *e2 = [NSEvent otherEventWithType:NSSystemDefined
+        NSEvent *e2 = [NSEvent otherEventWithType:NSEventTypeSystemDefined
                                          location:NSZeroPoint
                                     modifierFlags:0xb00
                                         timestamp:0

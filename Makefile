@@ -17,6 +17,7 @@ cliclick: Actions/ClickAction.o \
           Actions/KeyDownUpBaseAction.o \
           Actions/KeyPressAction.o \
           Actions/KeyUpAction.o \
+          Actions/OriginAction.o \
           Actions/MouseBaseAction.o \
           Actions/MoveAction.o \
           Actions/PrintAction.o \

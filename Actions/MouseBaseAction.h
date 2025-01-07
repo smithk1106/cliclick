@@ -34,6 +34,15 @@ typedef enum {
     YAXIS = 2
 } CLICLICKAXIS;
 
+struct WindowInfo {
+    NSInteger number;
+    NSInteger ownerPID;
+    bool isOnscreen;
+    CGRect bounds;
+    NSString *title;
+};
+typedef struct CG_BOXABLE WindowInfo WindowInfo;
+
 @interface MouseBaseAction : NSObject {
 
 }
@@ -55,6 +64,13 @@ typedef enum {
  */
 + (void)validateAxisValue:(NSString *)string
                   forAxis:(CLICLICKAXIS)axis;
+
+/**
+ * Get the origin by the window tile.
+ * 
+ * @param windowTitle The title of the origin window.
+ */
++ (WindowInfo *)getWindowInfo:(NSString *)windowTitle;
 
 /**
  * Returns a human-readable description of the action
@@ -90,5 +106,9 @@ typedef enum {
                                              toY:(float)endY;
 
 - (uint32_t)getMoveEventConstant;
+
+- (CGPoint)getOrigin;
+
+- (void)setOrigin:(CGPoint)p;
 
 @end
