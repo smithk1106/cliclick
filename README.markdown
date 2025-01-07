@@ -203,6 +203,19 @@ To get a quick first impression, this is what you will get when you invoke `clic
               Example: “type:Test” will type “Test”
               Example: “type:'Viele Grüße'” will type “Viele Grüße”
 
+      sl:str  Will send a mouse scroll event in the specified number of lines.
+              You can specify up to three values, corresponding to three scroll wheels,
+              usually interpreted as vertical, horizontal, and depth.
+              Positive is down/right; negative is up/left.
+              Example: "sl:10,2,0" will scroll down and to the right.
+
+      sp:str  Will send a mouse scroll event in the specified number of pixels.
+              Pixel scrolling is generally interpreted as smooth scrolling.
+              You can specify up to three values, corresponding to three scroll wheels,
+              usually interpreted as vertical, horizontal, and depth.
+              Positive is down/right; negative is up/left.
+              Example: "sp:10,2,0" will scroll down and to the right.
+
 Limitations
 -----------
 * It is not possible to use cliclick before a user logs in, i.e.: to control the login window.

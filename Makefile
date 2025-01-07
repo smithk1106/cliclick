@@ -21,6 +21,9 @@ cliclick: Actions/ClickAction.o \
           Actions/MoveAction.o \
           Actions/PrintAction.o \
           Actions/RightClickAction.o \
+          Actions/ScrollBaseAction.o \
+          Actions/ScrollLineAction.o \
+          Actions/ScrollPixelAction.o \
           Actions/TripleclickAction.o \
           Actions/TypeAction.o \
           Actions/WaitAction.o \
@@ -28,7 +31,7 @@ cliclick: Actions/ClickAction.o \
           KeycodeInformer.o \
           OutputHandler.o \
           cliclick.o
-	$(CC) -o cliclick $^ -framework Cocoa -framework Carbon
+	$(CC) -o cliclick $^ -framework Cocoa -framework Carbon -framework ScreenCaptureKit
 
 install: macros cliclick
 	cp cliclick /usr/local/bin/

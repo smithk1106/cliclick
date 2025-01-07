@@ -403,3 +403,29 @@ assertStdoutOutput \
     "When setting destination for command output to stdout, should write the action to stdout" \
     "-d stdout p:OK" \
     "OK"
+
+# Assertions for scroll line / sl command
+assertStderrOutput \
+    "When using “scroll line” (“sl”) without argument, should write error to stderr" \
+    "sl" \
+    "Missing argument to command “sl”: Expected one or more values (separated by a comma). Example: “sl:10”"
+
+assertStdoutOutput \
+    "When using “scroll line” (“sl”) in test mode with vertical scroll, should write action to stdout" \
+    "-m test sl:10" \
+    "Running in test mode. These command(s) would be executed:"$'\n'"Scroll 10 lines"
+
+assertStdoutOutput \
+    "When using “scroll line” (“sl”) in test mode with horizontal scroll, should write action to stdout" \
+    "-m test sl:0,10" \
+    "Running in test mode. These command(s) would be executed:"$'\n'"Scroll 0 lines vertically, 10 lines horizontally"
+
+assertStdoutOutput \
+    "When using “scroll line” (“sl”) in test mode with negative scroll, should write action to stdout" \
+    "-m test sl:-5" \
+    "Running in test mode. These command(s) would be executed:"$'\n'"Scroll -5 lines"
+
+assertStdoutOutput \
+    "When using “scroll line” (“sl”) in test mode with combined scroll, should write action to stdout" \
+    "-m test sl:10,-5,0" \
+    "Running in test mode. These command(s) would be executed:"$'\n'"Scroll 10 lines vertically, -5 lines horizontally, 0 lines in depth"
